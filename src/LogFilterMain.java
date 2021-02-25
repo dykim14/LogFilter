@@ -318,6 +318,7 @@ public class LogFilterMain extends JFrame implements INotiEvent
     final String INI_CMD_COUNT      = "CMD_COUNT";
     final String INI_CMD            = "CMD_";
     final String INI_FONT_TYPE      = "FONT_TYPE";
+    final String INI_FONT_SIZE      = "FONT_SIZE";
     final String INI_WORD_FIND      = "WORD_FIND";
     final String INI_WORD_REMOVE    = "WORD_REMOVE";
     final String INI_TAG_SHOW       = "TAG_SHOW";
@@ -447,6 +448,11 @@ public class LogFilterMain extends JFrame implements INotiEvent
             String strFontType = p.getProperty(INI_FONT_TYPE);
             if(strFontType != null && strFontType.length() > 0)
                 m_jcFontType.setSelectedItem(p.getProperty(INI_FONT_TYPE));
+            String strFontSize = p.getProperty(INI_FONT_SIZE);
+            if(strFontSize != null && strFontSize.length() > 0) {
+                m_tfFontSize.setText(strFontSize);
+                m_tbLogTable.setFontSize(Integer.parseInt(strFontSize));
+            }
             m_tfFindWord.setText(p.getProperty(INI_WORD_FIND));
             m_tfRemoveWord.setText(p.getProperty(INI_WORD_REMOVE));
             m_tfShowTag.setText(p.getProperty(INI_TAG_SHOW));
@@ -481,6 +487,7 @@ public class LogFilterMain extends JFrame implements INotiEvent
             Properties p = new Properties();
 //            p.setProperty( INI_LAST_DIR, m_strLastDir );
             p.setProperty(INI_FONT_TYPE,   (String)m_jcFontType.getSelectedItem());
+            p.setProperty(INI_FONT_SIZE,   m_tfFontSize.getText());
             p.setProperty(INI_WORD_FIND,   m_tfFindWord.getText());
             p.setProperty(INI_WORD_REMOVE, m_tfRemoveWord.getText());
             p.setProperty(INI_TAG_SHOW,    m_tfShowTag.getText());
